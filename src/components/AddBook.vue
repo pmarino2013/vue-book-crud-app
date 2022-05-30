@@ -57,6 +57,9 @@ const handleSubmit = async (e) => {
   }
   title.value = "";
   author.value = "";
+  setTimeout(() => {
+    message.value = "";
+  }, 2000);
   getBooks();
 };
 
@@ -85,18 +88,11 @@ const editHandler = async () => {
 <template>
   <div
     v-if="message?.msg"
-    class="alert alert-dismissible fade show"
+    class="alert"
     :class="message?.error ? 'alert-danger' : 'alert-success'"
     role="alert"
   >
     {{ message.msg }}
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      aria-label="Close"
-      @click="message.value = ''"
-    ></button>
   </div>
 
   <form @submit="handleSubmit">
